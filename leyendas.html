@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leyendas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      padding: 20px;
+      background: linear-gradient(to bottom, #fef6ff, #f5e6ff);
+      color: #4A235A;
+    }
+
+    .bienvenida-contenedor {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto 40px;
+      background: linear-gradient(135deg, #ffe1f5, #e5d4ff, #d2f4ff);
+      padding: 26px 32px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(140, 60, 170, 0.2);
+      border: 2px dashed #d08ae2;
+    }
+
+    .mascota-imagen {
+      width: 80px;
+      height: auto;
+      animation: flotar 3s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes flotar {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0); }
+    }
+
+    .bienvenida-texto {
+      font-size: 15px;
+      line-height: 1.6;
+      font-style: italic;
+      color: #5c1b75;
+      text-align: left;
+    }
+
+    .bienvenida-texto span {
+      font-size: 20px;
+      font-weight: bold;
+      color: #a02888;
+      display: block;
+      margin-bottom: 8px;
+      font-family: 'Luckiest Guy', cursive;
+    }
+
+    .libros-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+    }
+
+    .libro {
+      background: white;
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      transition: transform 0.25s ease;
+      position: relative;
+    }
+
+    .libro:hover {
+      transform: translateY(-6px);
+    }
+
+    .libro img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .libro p {
+      margin: 8px 0 4px;
+      font-size: 14px;
+      color: #4a235a;
+    }
+
+    .favorito {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #bbb;
+      transition: color 0.3s ease, transform 0.2s ease;
+      z-index: 10;
+      background: none;
+      border: none;
+    }
+
+    .favorito.activo {
+      color: gold;
+      transform: scale(1.2);
+    }
+
+    .descargar-btn, .leer-btn {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 13px;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    .descargar-btn {
+      background-color: #8e44ad;
+    }
+
+    .descargar-btn:hover {
+      background-color: #732d91;
+    }
+
+    .leer-btn {
+      background-color: #d35400;
+      margin-right: 6px;
+    }
+
+    .leer-btn:hover {
+      background-color: #a84300;
+    }
+
+    .ver-mas-btn, .volver {
+      display: block;
+      margin: 30px auto 0;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 30px;
+      background-color: #a02888;
+      color: white;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .ver-mas-btn:hover, .volver:hover {
+      background-color: #861a6d;
+    }
+
+    .oculto {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bienvenida-contenedor">
+    <img src="lexi.jpg" alt="Mascota Lexi" class="mascota-imagen" />
+    <div class="bienvenida-texto">
+      <span>✨ Bienvenido(a) a la sección de leyendas ✨</span>
+      Entre montañas que murmuran, cielos que cantan y estrellas que aún recuerdan, aquí encontrarás relatos antiguos que susurran secretos del alma andina.
+    </div>
+  </div>
+
+  <div class="libros-grid" id="leyendas-container">
+    <!-- Leyendas visibles -->
+    <div class="libro" data-id="La casa Matusita" style="background-color: #ffece6;">
+  <div class="favorito">⭐</div>
+  <img src="casa matusita.jpeg" alt="Casa Matusita" />
+  <p><strong>La casa Matusita</strong></p>
+  <div class="info-extra">Lima, Perú - siglo XX</div>
+  <a href="matusita.pdf" class="descargar-btn" download>📄 Descargar PDF</a>
+  <a href="leyenda.html?id=La%20casa%20Matusita" class="descargar-btn">📖 Leer</a>
+</div>
+
+
+    <div class="libro" data-id="Manco Cápac y Mama Ocllo" style="background-color: #f7eaff;">
+      <div class="favorito">⭐</div>
+      <img src="Manco Cápac y Mama Ocllo.jpg" alt="Manco Cápac y Mama Ocllo" />
+      <p><strong>Manco Cápac y Mama Ocllo</strong></p>
+      <div class="info-extra">Cusco, Perú - época incaica</div>
+      <a href="#" class="leer-btn">📖 Leer</a>
+      <a href="manco_mama.pdf" class="descargar-btn" download>📄 Descargar PDF</a>
+    </div>
+
+    <div class="libro" data-id="El sacerdote sin cabeza" style="background-color: #fff9e6;">
+      <div class="favorito">⭐</div>
+      <img src="el padre sin cabeza.jpeg" alt="Padre sin cabeza" />
+      <p><strong>El sacerdote sin cabeza</strong></p>
+      <div class="info-extra">Arequipa, Perú - siglo XIX</div>
+      <a href="#" class="leer-btn">📖 Leer</a>
+      <a href="sacerdote.pdf" class="descargar-btn" download>📄 Descargar PDF</a>
+    </div>
+
+    <div class="libro" data-id="La Dama de blanco" style="background-color: #e9f9f9;">
+      <div class="favorito">⭐</div>
+      <img src="dama blanco.webp" alt="La Dama de blanco" />
+      <p><strong>La Dama de blanco</strong></p>
+      <div class="info-extra">Trujillo, Perú - siglo XX</div>
+      <a href="#" class="leer-btn">📖 Leer</a>
+      <a href="dama_blanco.pdf" class="descargar-btn" download>📄 Descargar PDF</a>
+    </div>
+
+    <div class="libro" data-id="Ayaymama" style="background-color: #fdf1f1;">
+      <div class="favorito">⭐</div>
+      <img src="Ayaymama.jpg" alt="Ayaymama" />
+      <p><strong>Ayaymama</strong></p>
+      <div class="info-extra">Selva peruana - tradición oral</div>
+      <a href="#" class="leer-btn">📖 Leer</a>
+      <a href="ayaymama.pdf" class="descargar-btn" download>📄 Descargar PDF</a>
+    </div>
+
+    <div class="libro" data-id="La llorona" style="background-color: #e6f3ff;">
+      <div class="favorito">⭐</div>
+      <img src="la llorona.jpg" alt="La llorona" />
+      <p><strong>La llorona</strong></p>
+      <div class="info-extra">América Latina - siglo XIX</div>
+      <a href="#" class="leer-btn">📖 Leer</a>
+      <a href="llorona.pdf" class="descargar-btn" download>📄 Descargar PDF</a>
+    </div>
+
+    <!-- Leyendas ocultas -->
+    <div class="libro oculto" data-id="Los Hermanos Ayar" style="background-color: #f7e9ff;">
+      <div class="favorito">⭐</div>
+      <img src="hermanos ayar.jpg" alt="Hermanos Ayar" />
+      <p><strong>Los Hermanos Ayar</strong></p>
+      <div class="info-extra">Andes centrales - época incaica</div>
+      <a href="#" class="leer-btn">📖 Leer</a>
+      <a href="ayar.pdf" class="descargar-btn" download>📄 Descargar PDF</a>
+    </div>
+
+    <div class="libro oculto" data-id="La cueva del chivato" style="background-color: #fff2db;">
+      <div class="favorito">⭐</div>
+      <img src="el chivato.jpg" alt="Cueva del chivato" />
+      <p><strong>La cueva del chivato</strong></p>
+      <div class="info-extra">Tacna, Perú - siglo XX</div>
+      <a href="#" class="leer-btn">📖 Leer</a>
+      <a href="chivato.pdf" class="descargar-btn" download>📄 Descargar PDF</a>
+    </div>
+
+    <div class="libro oculto" data-id="La sirena del lago Titicaca" style="background-color: #e6ffff;">
+      <div class="favorito">⭐</div>
+      <img src="sirena.avif" alt="Sirena del Titicaca" />
+      <p><strong>La sirena del lago Titicaca</strong></p>
+      <div class="info-extra">Puno, Perú - leyenda aimara</div>
+      <a href="#" class="leer-btn">📖 Leer</a>
+      <a href="sirena.pdf" class="descargar-btn" download>📄 Descargar PDF</a>
+    </div>
+
+    <div class="libro oculto" data-id="Laguna Yanacocha" style="background-color: #e9ffe9;">
+      <div class="favorito">⭐</div>
+      <img src="laguna.jpg" alt="Laguna Yanacocha" />
+      <p><strong>Laguna Yanacocha</strong></p>
+      <div class="info-extra">Huancavelica, Perú - oralidad andina</div>
+      <a href="#" class="leer-btn">📖 Leer</a>
+      <a href="yanacocha.pdf" class="descargar-btn" download>📄 Descargar PDF</a>
+    </div>
+  </div>
+
+  <button class="ver-mas-btn" onclick="mostrarMas()">🔽 Ver más</button>
+  <button onclick="window.location.href='dashboard.html'" class="volver">🔙 Volver</button>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+      document.querySelectorAll('.libro').forEach(libro => {
+        const id = libro.dataset.id;
+        const estrella = libro.querySelector('.favorito');
+        if (favoritos.includes(id)) {
+          estrella.classList.add('activo');
+        }
+
+        estrella.addEventListener('click', () => toggleFavorito(id, estrella));
+      });
+    });
+
+    function toggleFavorito(id, estrella) {
+      let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+      if (favoritos.includes(id)) {
+        favoritos = favoritos.filter(fav => fav !== id);
+        estrella.classList.remove('activo');
+      } else {
+        favoritos.push(id);
+        estrella.classList.add('activo');
+      }
+
+      localStorage.setItem("favoritos", JSON.stringify(favoritos));
+    }
+
+    function mostrarMas() {
+      document.querySelectorAll('.libro.oculto').forEach(el => el.classList.remove('oculto'));
+      document.querySelector('.ver-mas-btn').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

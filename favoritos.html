@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mis Favoritos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to bottom right,#f8e0a5, #ffe9b3);
+      color: #333;
+    }
+
+    .contenedor {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .tarjeta-bienvenida {
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #ffe9b3, #ffd6e8);
+      border: 2px solid #f8c8dc;
+      border-radius: 14px;
+      padding: 20px 26px;
+      box-shadow: 0 8px 20px rgba(255, 182, 193, 0.2);
+      margin-bottom: 40px;
+      gap: 20px;
+    }
+
+    .tarjeta-bienvenida img {
+      width: 100px;
+      height: auto;
+      border-radius: 12px;
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .mensaje-especial {
+      text-align: left;
+      font-size: 17px;
+      color: #5d1049;
+      margin: 10px 0 0 12px;
+      font-weight: 500;
+      line-height: 1.6;
+      max-width: 95%;
+    }
+
+    .texto {
+      flex: 1;
+    }
+
+    .texto h2 {
+      font-size: 24px;
+      color: #00796b;
+      margin: 0 0 10px 12px;
+    }
+
+    .texto p {
+      font-size: 16px;
+      color: #444;
+      margin: 0;
+    }
+
+    .subtitulo {
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+      color: #5d1049;
+      margin-bottom: 20px;
+    }
+
+    .volver {
+      display: block;
+      margin: 12cm auto 0;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #ffe9b3, #ffd6e8);
+      color: #5d1049;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .volver:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(255, 182, 193, 0.5);
+    }
+
+    @media (max-width: 700px) {
+      .tarjeta-bienvenida {
+        flex-direction: row;
+        text-align: left;
+      }
+
+      .tarjeta-bienvenida img {
+        width: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <div class="tarjeta-bienvenida">
+      <img src="lexi.jpg" alt="Mascota Lexi" />
+      <div class="texto">
+        <h2>¡Hola de nuevo!</h2>
+        <p class="mensaje-especial">
+          Este es tu espacio para volver a lo que más te gustó. Guarda, explora y redescubre tus favoritos 
+          de todas las secciones de <strong>El Libro Abierto</strong>. 📚💫
+        </p>
+      </div>
+    </div>
+
+    <!-- Leyendas favoritas se insertarán aquí -->
+
+    <button class="volver" onclick="history.back()">⬅ Regresar</button>
+  </div>
+
+  <script>
+    const leyendasData = [
+      {
+        id: "La casa Matusita",
+        titulo: "La casa Matusita",
+        img: "casa matusita.jpeg",
+        info: "Lima, Perú - siglo XX",
+        pdf: "matusita.pdf"
+      },
+      {
+        id: "Manco Cápac y Mama Ocllo",
+        titulo: "Manco Cápac y Mama Ocllo",
+        img: "Manco Cápac y Mama Ocllo.jpg",
+        info: "Cusco, Perú - época incaica",
+        pdf: "manco_mama.pdf"
+      },
+      {
+        id: "El sacerdote sin cabeza",
+        titulo: "El sacerdote sin cabeza",
+        img: "el padre sin cabeza.jpeg",
+        info: "Arequipa, Perú - siglo XIX",
+        pdf: "sacerdote.pdf"
+      },
+      {
+        id: "La Dama de blanco",
+        titulo: "La Dama de blanco",
+        img: "dama blanco.webp",
+        info: "Trujillo, Perú - siglo XX",
+        pdf: "dama_blanco.pdf"
+      },
+      {
+        id: "Ayaymama",
+        titulo: "Ayaymama",
+        img: "Ayaymama.jpg",
+        info: "Selva peruana - tradición oral",
+        pdf: "ayaymama.pdf"
+      },
+      {
+        id: "La llorona",
+        titulo: "La llorona",
+        img: "la llorona.jpg",
+        info: "América Latina - siglo XIX",
+        pdf: "llorona.pdf"
+      },
+      {
+        id: "Los Hermanos Ayar",
+        titulo: "Los Hermanos Ayar",
+        img: "hermanos ayar.jpg",
+        info: "Andes centrales - época incaica",
+        pdf: "ayar.pdf"
+      },
+      {
+        id: "La cueva del chivato",
+        titulo: "La cueva del chivato",
+        img: "el chivato.jpg",
+        info: "Tacna, Perú - siglo XX",
+        pdf: "chivato.pdf"
+      },
+      {
+        id: "La sirena del lago Titicaca",
+        titulo: "La sirena del lago Titicaca",
+        img: "sirena.avif",
+        info: "Puno, Perú - leyenda aimara",
+        pdf: "sirena.pdf"
+      },
+      {
+        id: "Laguna Yanacocha",
+        titulo: "Laguna Yanacocha",
+        img: "laguna.jpg",
+        info: "Huancavelica, Perú - oralidad andina",
+        pdf: "yanacocha.pdf"
+      }
+    ];
+
+    const contenedor = document.querySelector(".contenedor");
+    const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+    const leyendasFavoritas = leyendasData.filter(l => favoritos.includes(l.id));
+
+    if (leyendasFavoritas.length === 0) {
+      const mensaje = document.createElement("p");
+      mensaje.textContent = "Aún no has marcado ninguna leyenda como favorita.";
+      mensaje.style.textAlign = "center";
+      mensaje.style.color = "#5d1049";
+      mensaje.style.fontSize = "18px";
+      mensaje.style.marginTop = "30px";
+      contenedor.insertBefore(mensaje, document.querySelector(".volver"));
+    } else {
+      leyendasFavoritas.forEach(leyenda => {
+        const tarjeta = document.createElement("div");
+        tarjeta.style.background = "#fff8e1";
+        tarjeta.style.borderRadius = "16px";
+        tarjeta.style.padding = "16px";
+        tarjeta.style.marginBottom = "20px";
+        tarjeta.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
+        tarjeta.style.display = "flex";
+        tarjeta.style.alignItems = "center";
+        tarjeta.style.gap = "20px";
+
+        tarjeta.innerHTML = `
+          <img src="${leyenda.img}" alt="${leyenda.titulo}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 12px;">
+          <div>
+            <h3 style="margin: 0; color: #5d1049;">${leyenda.titulo}</h3>
+            <p style="margin: 4px 0; color: #555;">${leyenda.info}</p>
+            <a href="${leyenda.pdf}" download style="display: inline-block; margin-top: 6px; padding: 6px 14px; background-color: #f48fb1; color: white; text-decoration: none; border-radius: 20px;">📄 Descargar PDF</a>
+          
+            </div>
+        `;
+
+        contenedor.insertBefore(tarjeta, document.querySelector(".volver"));
+      });
+    }
+  </script>
+</body>
+</html>

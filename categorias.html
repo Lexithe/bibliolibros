@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Libro Abierto</title>
+
+  <!-- Fuente decorativa -->
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    
+    .mascota-imagen {
+      width: 100px;
+      height: auto;
+    } 
+  .botones-columnas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  margin: 0 auto 40px;
+  max-width: calc(100% - 40px); /* NUEVO: evita que se corte en pantallas estrechas */
+  padding: 0 20px; /* Ligeramente más compacto */
+  box-sizing: border-box; /* IMPORTANTE: asegura que padding no exceda el ancho */
+}
+
+    .botones-columnas .btn {
+      position: relative;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      user-select: none;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      text-align: center;
+      justify-content: center;
+      min-width: 140px;
+    }
+
+    .botones-columnas .btn::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0.2) 100%
+      );
+      transform: rotate(25deg);
+      animation: shine 3s infinite;
+      pointer-events: none;
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+      border-radius: 14px;
+      z-index: 0;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) rotate(25deg); }
+      100% { transform: translateX(100%) rotate(25deg); }
+    }
+
+    .botones-columnas .btn:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 22px rgba(0, 0, 0, 0.25);
+      filter: brightness(1.1);
+      z-index: 1;
+    }
+
+    /* Colores por categoría */
+    .btn.leyendas  { background-color: #8E44AD; }
+    .btn.libros    { background-color: #2E86C1; }
+    .btn.ensayos   { background-color: #27AE60; }
+    .btn.cuentos   { background-color: #E67E22; }
+    .btn.articulos { background-color: #2980B9; }
+    .btn.textos    { background-color: #F39C12; }
+    .btn.novelas   { background-color: #D35400; }
+    .btn.obras     { background-color: #C0392B; }
+    .btn.poesia    { background-color: #E91E63; }
+
+    .botones-columnas .btn > span {
+      font-size: 24px;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+      display: inline-block;
+      line-height: 1;
+    }
+
+    /* Centrar el botón Poesía en su propia fila */
+    .poesia-wrapper {
+      display: flex;
+      justify-content: center;
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 600px) {
+      .botones-columnas {
+        padding-left: 20px;
+        padding-right: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(auto, 1fr));
+        gap: 12px;
+        max-width: 100%;
+      }
+
+      .botones-columnas .btn {
+        padding: 8px 14px; /* Menos padding para que se ajuste más al texto */
+        min-width: auto; /* Quitar el min-width para adaptarse al contenido */
+        font-size: 14px;
+        gap: 8px;
+      }
+
+      .botones-columnas .btn > span {
+        font-size: 20px;
+      }
+
+      .poesia-wrapper .btn {
+        padding: 8px 20px; /* Un poco más de espacio en poesía para que no se vea apretado */
+        font-size: 14px;
+        min-width: auto;
+        gap: 8px;
+      }
+
+      .mascota-y-botones {
+        flex-direction: column;
+        align-items: center;
+        margin: 20px auto;
+      }
+
+      .mascota-imagen {
+        margin-bottom: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="idioma-container">
+      <div class="idioma-label">🌐 Idiomas</div>
+      <select class="idioma-select">
+        <option value="es">Español</option>
+        <option value="it">Italiano</option>
+        <option value="fr">Francés</option>
+        <option value="ay">Aimara</option>
+        <option value="qu">Quechua</option>
+        <option value="en">Inglés</option>
+        <option value="pt">Portugués</option>
+      </select>
+    </div>
+
+    <div class="buscador-lupa">
+      <input id="buscar-idioma-derecha" type="text" placeholder="Buscar idioma" autocomplete="off" />
+      <span class="emoji-lupa">🔍</span>
+    </div>
+
+    <!-- Encabezado curvado -->
+    <svg viewBox="0 0 500 150" width="100%" height="150">
+      <defs>
+        <path id="curve" d="M50,100 Q250,10 450,100" />
+      </defs>
+      <text font-size="32" fill="#c2185b" font-family="'Luckiest Guy', cursive">
+        <textPath href="#curve" startOffset="50%" text-anchor="middle">
+          EL LIBRO ABIERTO
+        </textPath>
+      </text>
+    </svg>
+
+    <img src="libroabierto.png" alt="Libro abierto" class="libro-imagen" />
+    <p class="subtitulo">TRADUCIENDO SABERES, PRESERVANDO HISTORIAS</p>
+  </header>
+
+  <main>
+       <div style="text-align: center; margin-bottom: 20px;">
+  <img src="lexi.jpg" alt="Mascota" class="mascota-imagen" />
+</div>
+
+    <h1 style="text-align: center;">📚 Categorías</h1>
+    <div class="botonera botones-columnas">
+  <a href="leyendas.html" class="btn leyendas"><span>📜</span> Leyendas</a>
+      <button class="btn libros"><span>📚</span> Libros</button>
+      <button class="btn ensayos"><span>🧠</span> Ensayos</button>
+      <button class="btn cuentos"><span>🧙‍♂</span> Cuentos</button>
+      <button class="btn articulos"><span>📰</span> Artículos</button>
+      <button class="btn textos"><span>📝</span> Textos</button>
+      <button class="btn novelas"><span>💌</span> Novelas</button>
+      <button class="btn obras"><span>🎭</span> Obras</button>
+
+      <!-- Botón Poesía centrado -->
+      <div class="poesia-wrapper">
+        <button class="btn poesia"><span>🪶</span> Poesía</button>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
